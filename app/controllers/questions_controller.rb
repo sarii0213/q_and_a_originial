@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
   def index
-    @questions = Question.all
+    @q = Question.ransack(params[:q])
+    @questions = @q.result(distinct: true)
   end
 
   def new
@@ -38,12 +39,14 @@ class QuestionsController < ApplicationController
   end
 
   def unsolved
-    @questions = Question.where(solved: false)
+    @q = Question.where(solved: false).ransack(params[:q])
+    @questions = @q.result(distinct: true)
     render 'questions/index'
   end
 
   def solved
-    @questions = Question.where(solved: true)
+    @q = Question.where(solved: true).ransack(params[:q])
+    @questions = @q.result(distinct: true)
     render 'questions/index'
   end
 

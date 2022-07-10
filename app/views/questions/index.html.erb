@@ -10,6 +10,13 @@
     <%= link_to '解決済み', solved_questions_path %>
   </li>
 </ul>
+<div>
+  <%= search_form_for @q do |f| %>
+    <%= f.label :title_or_body_cont, '質問を検索' %>
+    <%= f.search_field :title_or_body_cont %>
+    <%= f.submit %>
+  <% end %>
+</div>
 <ul>
   <% @questions.each do |question| %>
     <li>
