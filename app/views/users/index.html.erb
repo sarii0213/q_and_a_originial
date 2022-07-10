@@ -1,0 +1,11 @@
+<h3>ユーザー一覧</h3>
+<ul>
+  <% @users.each do |user| %>
+    <li>
+      <%= image_tag user.image if user.image.attached? %>
+    </li>
+    <li>
+      <%= user.name %>
+    </li>
+  <% end %>
+</ul>
