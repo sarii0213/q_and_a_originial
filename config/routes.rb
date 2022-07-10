@@ -14,6 +14,6 @@ Rails.application.routes.draw do
     member do
       post 'solve'
     end
+    resources :answers, only: %i[create]
   end
-
 end
