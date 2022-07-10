@@ -17,6 +17,10 @@
     <%= f.submit %>
   <% end %>
 </div>
+<div>
+  <%= paginate @questions %>
+  <%= page_entries_info @questions %>
+</div>
 <ul>
   <% @questions.each do |question| %>
     <li>
