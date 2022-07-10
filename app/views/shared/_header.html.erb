@@ -4,6 +4,12 @@
       <%= current_user.name %>さん
     </li>
     <li>
+      <%= link_to '質問一覧', questions_path %>
+    </li>
+    <li>
+      <%= link_to '質問作成', new_question_path %>
+    </li>
+    <li>
       <%= link_to 'ユーザー一覧', users_path %>
     </li>
     <li>
