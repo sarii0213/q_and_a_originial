@@ -16,4 +16,6 @@ Rails.application.routes.draw do
     end
     resources :answers, only: %i[create]
   end
+
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end

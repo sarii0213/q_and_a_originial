@@ -11,6 +11,10 @@ class QuestionsController < ApplicationController
   def create
     @question = current_user.questions.new(question_params)
     if @question.save
+      @users = User.where.not(id: @question.user_id)
+      @users.each do |user|
+        QuestionMailer.create_email(question: @question, user: user).deliver_now
+      end
       redirect_to questions_path, notice: "質問「#{@question.title}」が登録されました"
     else
       redirect_to new_question_path, danger: '質問登録できませんでした'
