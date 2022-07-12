@@ -1,12 +1,2 @@
 <h1>ログイン</h1>
-<%= form_with scope: :session do |f| %>
-
-  <%= f.label :email, 'メールアドレス' %>
-  <%= f.text_field :email, id: 'session_email' %>
-
-  <%= f.label :password, 'パスワード' %>
-  <%= f.password_field :password, id: 'session_password' %>
-
-  <%= f.submit %>
-
-<% end %>
+<%= render partial: 'form' %>

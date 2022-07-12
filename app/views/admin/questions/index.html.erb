@@ -1,0 +1,9 @@
+<h3>質問一覧</h3>
+<ul>
+<% @questions.each do |question| %>
+  <li>
+    <%= question.title %>
+    <%= link_to '削除', admin_question_path(question), method: :delete, data: { confirm: '削除しますか？' } %>
+  </li>
+<% end %>
+</ul>
