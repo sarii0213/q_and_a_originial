@@ -1,0 +1,10 @@
+ja:
+  sessions:
+    form:
+      submit: ログイン
+#  questions:
+#    helpers:
+#      submit:
+#        edit: 更新する
+#        new: 質問する
+

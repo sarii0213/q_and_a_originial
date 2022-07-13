@@ -1,8 +1,8 @@
 質問が投稿されました！
 ==================
 
-質問タイトル：
+<%= Question.human_attribute_name(:title) %>：
 <%= @question.title %>
 
-質問内容：
+<%= Question.human_attribute_name(:body) %>：
 <%= @question.body %>

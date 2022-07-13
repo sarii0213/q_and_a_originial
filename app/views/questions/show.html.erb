@@ -15,9 +15,9 @@
 <!-- /#question-area -->
 
 <%= form_with model: [@question, Answer.new] do |f| %>
-  <%= f.label :body, '回答内容' %>
+  <%= f.label :body %>
   <%= f.text_area :body, id: 'answer_body' %>
-  <%= f.submit '回答する' %>
+  <%= f.submit %>
 <% end %>
 
 <ul>
