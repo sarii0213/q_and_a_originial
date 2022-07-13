@@ -1,7 +1,7 @@
 <%= form_with model: question do |f| %>
-  <%= f.label :title, '質問タイトル' %>
+  <%= f.label :title, 'タイトル' %>
   <%= f.text_field :title, id: 'question_title' %>
   <%= f.label :body, '質問内容' %>
   <%= f.text_area :body, id: 'question_body' %>
-  <%= f.submit %>
+  <%= f.submit submit_button %>
 <% end %>

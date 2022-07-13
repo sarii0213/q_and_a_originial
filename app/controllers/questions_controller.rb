@@ -15,9 +15,9 @@ class QuestionsController < ApplicationController
       @users.each do |user|
         QuestionMailer.create_email(question: @question, user: user).deliver_now
       end
-      redirect_to questions_path, notice: "質問「#{@question.title}」が登録されました"
+      redirect_to question_path(@question), notice: '質問を作成しました'
     else
-      redirect_to new_question_path, danger: '質問登録できませんでした'
+      redirect_to new_question_path, danger: '質問を作成できませんでした'
     end
   end
 
@@ -44,20 +44,20 @@ class QuestionsController < ApplicationController
 
   def unsolved
     @q = Question.where(solved: false).ransack(params[:q])
-    @questions = @q.result(distinct: true)
+    @questions = @q.result(distinct: true).page(params[:page])
     render 'questions/index'
   end
 
   def solved
     @q = Question.where(solved: true).ransack(params[:q])
-    @questions = @q.result(distinct: true)
+    @questions = @q.result(distinct: true).page(params[:page])
     render 'questions/index'
   end
 
   def solve
     @question = current_user.questions.find(params[:id])
     @question.update!(solved: true)
-    redirect_to question_path(@question), notice: "解決済みにしました"
+    redirect_to question_path(@question), notice: '解決済みにしました'
   end
 
   private

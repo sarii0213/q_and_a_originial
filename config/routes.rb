@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     member do
       post 'solve'
     end
-    resources :answers, only: %i[create]
+    resources :answers, only: %i[create destroy]
   end
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?

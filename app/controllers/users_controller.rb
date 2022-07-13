@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_action :login_required, except: :index
   def index
     @users = User.all
   end
@@ -10,7 +11,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to users_path, notice: "ユーザー「#{@user.name}」を登録しました"
+      session[:user_id] = @user.id
+      redirect_to questions_path, notice: 'サインアップが完了しました'
     else
       redirect_to new_user_path, danger: 'ユーザー登録に失敗しました'
     end
