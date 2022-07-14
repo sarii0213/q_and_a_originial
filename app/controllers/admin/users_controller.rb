@@ -6,6 +6,6 @@ class Admin::UsersController < Admin::BaseController
   def destroy
     @user = User.find(params[:id])
     @user.destroy!
-    redirect_to admin_users_path, notice: "ユーザー「#{@user.name}」を削除しました"
+    redirect_to admin_users_path, info: "ユーザー「#{@user.name}」を削除しました"
   end
 end
