@@ -7,12 +7,50 @@
   <%= csp_meta_tag %>
 
   <%= stylesheet_link_tag 'admin/application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css' %>
   <%= javascript_pack_tag 'admin/application', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js' %>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
 </head>
 
-<body>
-<%= render partial: 'admin/shared/header' %>
-<%= render partial: 'admin/shared/flash_message' %>
-<%= yield %>
+<body class="sidebar-mini" style="height: auto;">
+<div class="wrapper">
+  <%= render partial: 'admin/shared/header' %>
+  <%= render partial: 'admin/shared/sidebar' %>
+  <div class="content-wrapper">
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row">
+          <h1 class="m-0"><%= yield :title %></h1>
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <%= render partial: 'admin/shared/flash_message' %>
+        </div>
+        <div class="row">
+          <div class="col-md-8">
+            <%= yield %>
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </div>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <%= render partial: 'admin/shared/footer' %>
+</div>
+<!-- /.wrapper -->
 </body>
 </html>

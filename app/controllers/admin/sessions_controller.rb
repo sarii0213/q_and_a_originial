@@ -1,4 +1,5 @@
 class Admin::SessionsController < Admin::BaseController
+  layout 'admin/layouts/sessions'
   skip_before_action :login_required
   def new
   end
@@ -8,7 +9,7 @@ class Admin::SessionsController < Admin::BaseController
 
     if @user.present? && @user.authenticate(session_params[:password]) && @user.admin?
       session[:user_id] = @user.id
-      redirect_to questions_path, notice: '管理画面にログインしました'
+      redirect_to admin_questions_path, notice: '管理画面にログインしました'
     else
       flash[:danger] = '管理画面にログインできませんでした'
       redirect_to admin_login_path
