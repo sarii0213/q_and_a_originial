@@ -1,4 +1,21 @@
 <% provide :title, '質問一覧' %>
+
+<div class="row">
+  <div class="col-md-8">
+    <div class="">
+      <%= paginate @questions, views_prefix: :admin %>
+    </div>
+    <!-- /.column -->
+    <div class="">
+      <%= page_entries_info @questions %>
+    </div>
+    <!-- /.column -->
+  </div>
+  <!-- /.row -->
+  <!-- /.col-md-8 -->
+</div>
+<!-- /.row -->
+
 <div class="row my-3">
   <div class="col-md-8">
     <%= search_form_for(@q, url: admin_questions_path) do |f| %>
