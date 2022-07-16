@@ -2,6 +2,14 @@
   <div class="ui container">
     <div class="item">質問回答アプリ</div>
     <% if current_user %>
+      <div class="item">
+        <% if current_user.image.attached? %>
+          <%= image_tag current_user.image, class: 'ui avatar image' %>
+        <% else %>
+          <%= image_tag 'default_avatar.png', class: 'ui avatar image' %>
+        <% end %>
+      </div>
+      <!-- /.item -->
       <div class="item"><%= current_user.name %>さん</div>
       <div class="right menu">
         <!-- /.item -->

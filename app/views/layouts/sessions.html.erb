@@ -18,45 +18,45 @@
 <body>
 <div class="container">
 
-<div class="ui middle aligned center aligned grid my-5">
-  <div class="eight wide column">
-    <h2 class="ui teal image header">
-      <div class="content">
-        質問回答アプリログイン
-      </div>
-    </h2>
+  <div class="ui middle aligned center aligned grid my-5">
+    <div class="eight wide column">
+      <h2 class="ui teal image header">
+        <div class="content">
+          質問回答アプリログイン
+        </div>
+      </h2>
 
 
       <%= form_with(scope: :session, class: 'ui large form') do |f| %>
-      <div class="ui stacked segment left aligned">
-        <div class="field">
-          <%= f.label :email, User.human_attribute_name(:email) %>
-          <div class="ui left icon input">
-            <i class="user icon"></i>
-            <%= f.text_field :email, id: 'session_email', placeholder: "メールアドレス" %>
+        <div class="ui stacked segment left aligned">
+          <div class="field">
+            <%= f.label :email, User.human_attribute_name(:email) %>
+            <div class="ui left icon input">
+              <i class="user icon"></i>
+              <%= f.text_field :email, id: 'session_email', placeholder: "メールアドレス" %>
+            </div>
           </div>
-        </div>
-        <div class="field">
-          <%= f.label :password, User.human_attribute_name(:password) %>
-          <div class="ui left icon input">
-            <i class="lock icon"></i>
-            <%= f.password_field :password, id: 'session_password', placeholder: "Password" %>
+          <div class="field">
+            <%= f.label :password, User.human_attribute_name(:password) %>
+            <div class="ui left icon input">
+              <i class="lock icon"></i>
+              <%= f.password_field :password, id: 'session_password', placeholder: "Password" %>
+            </div>
           </div>
+          <!--        <div class="ui fluid large teal submit button">Login</div>-->
+          <%= f.submit 'ログイン', class: "ui fluid large teal submit button" %>
         </div>
-<!--        <div class="ui fluid large teal submit button">Login</div>-->
-        <%= f.submit 'ログイン', class: "ui fluid large teal submit button" %>
-      </div>
 
 
-    <% end %>
+      <% end %>
       <%= render partial: 'shared/flash_message' %>
 
-    <div class="ui message">
-      アカウントがない場合：
-      <%= link_to 'アカウント登録', new_user_path %>
+      <div class="ui message">
+        アカウントがない場合：
+        <%= link_to 'アカウント登録', new_user_path %>
+      </div>
     </div>
   </div>
-</div>
 
 </div>
 <!-- /.container -->

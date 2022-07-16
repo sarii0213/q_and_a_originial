@@ -5,13 +5,10 @@
     <div class="">
       <%= paginate @questions, views_prefix: :admin %>
     </div>
-    <!-- /.column -->
     <div class="">
       <%= page_entries_info @questions %>
     </div>
-    <!-- /.column -->
   </div>
-  <!-- /.row -->
   <!-- /.col-md-8 -->
 </div>
 <!-- /.row -->
@@ -33,6 +30,7 @@
   </div>
   <!-- /.col -->
 </div>
+
 <div class="card">
   <div class="card-body">
     <table class="table">
@@ -72,11 +70,4 @@
 
 </div>
 <!-- /.card -->
-<!--<ul>-->
-<%# @questions.each do |question| %>
-<!--    <li>-->
-<%#= question.title %>
-<%#= link_to '削除', admin_question_path(question), method: :delete, data: { confirm: '削除しますか？' } %>
-<!--    </li>-->
-<%# end %>
-<!--</ul>-->
+
