@@ -4,8 +4,8 @@
     <table class="table">
       <thead>
       <tr>
-        <th style="width: 10px">#</th>
-        <th><%= Question.human_attribute_name(:title) %></th>
+        <th style="width: 30px"></th>
+        <th></th>
         <th style="width: 100px"></th>
       </tr>
       </thead>
@@ -13,7 +13,14 @@
       <% @questions.each do |question| %>
         <tr>
           <td>
-            <%= question.id %>
+            <div class="user-block">
+              <% if question.user.image.attached? %>
+                <%= image_tag question.user.image, class: 'img-circle' %>
+              <% else %>
+                <%= image_tag 'default_avatar.png', class: 'img-circle' %>
+              <% end %>
+            </div>
+            <!-- /.user-block -->
           </td>
           <td>
             <%= question.title %>
@@ -32,10 +39,10 @@
 </div>
 <!-- /.card -->
 <!--<ul>-->
-  <%# @questions.each do |question| %>
+<%# @questions.each do |question| %>
 <!--    <li>-->
-      <%#= question.title %>
-      <%#= link_to '削除', admin_question_path(question), method: :delete, data: { confirm: '削除しますか？' } %>
+<%#= question.title %>
+<%#= link_to '削除', admin_question_path(question), method: :delete, data: { confirm: '削除しますか？' } %>
 <!--    </li>-->
-  <%# end %>
+<%# end %>
 <!--</ul>-->

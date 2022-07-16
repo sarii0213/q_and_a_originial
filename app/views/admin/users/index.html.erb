@@ -4,8 +4,8 @@
     <table class="table">
       <thead>
       <tr>
-        <th style="width: 10px">#</th>
-        <th><%= User.human_attribute_name(:name) %></th>
+        <th style="width: 30px"></th>
+        <th></th>
         <th style="width: 100px"></th>
       </tr>
       </thead>
@@ -13,7 +13,14 @@
       <% @users.each do |user| %>
         <tr>
           <td>
-            <%= user.id %>
+            <div class="user-block">
+              <% if user.image.attached? %>
+                <%= image_tag user.image, class: 'img-circle' %>
+              <% else %>
+                <%= image_tag 'default_avatar.png', class: 'img-circle' %>
+              <% end %>
+            </div>
+            <!-- /.user-block -->
           </td>
           <td>
             <%= user.name %>
