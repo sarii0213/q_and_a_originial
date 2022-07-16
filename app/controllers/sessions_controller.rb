@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   skip_before_action :login_required
+  layout 'layouts/sessions'
   def new
   end
 
@@ -8,15 +9,15 @@ class SessionsController < ApplicationController
 
     if @user&.authenticate(session_params[:password])
       session[:user_id] = @user.id
-      redirect_to questions_path, notice: 'ログインしました'
+      redirect_to questions_path, success: 'ログインしました'
     else
-      redirect_to login_path, danger: 'ログイン失敗しました'
+      redirect_to login_path, error: 'ログイン失敗しました'
     end
   end
 
   def destroy
     reset_session
-    redirect_to login_path, notice: 'ログアウトしました'
+    redirect_to login_path, success: 'ログアウトしました'
   end
 
   private

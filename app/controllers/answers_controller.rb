@@ -9,18 +9,18 @@ class AnswersController < ApplicationController
       users.each do |user|
         AnswerMailer.create_email(answer: @answer, question: @question, user: user).deliver_now
       end
-      flash[:notice] = '回答しました'
+      flash[:success] = '回答しました'
       render 'questions/show'
     else
-      flash[:danger] = '回答が登録できませんでした'
+      flash[:error] = '回答が登録できませんでした'
       render 'questions/show'
     end
   end
 
   def destroy
-    @answer = Answer.find(params[:id])
+    @answer = current_user.answers.find(params[:id])
     @answer.destroy!
-    redirect_to question_path(params[:question_id]), notice: '回答を削除しました'
+    redirect_to question_path(params[:question_id]), success: '回答を削除しました'
   end
 
   private

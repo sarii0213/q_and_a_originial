@@ -15,9 +15,9 @@ class QuestionsController < ApplicationController
       @users.each do |user|
         QuestionMailer.create_email(question: @question, user: user).deliver_now
       end
-      redirect_to question_path(@question), notice: '質問を作成しました'
+      redirect_to question_path(@question), success: '質問を作成しました'
     else
-      redirect_to new_question_path, danger: '質問を作成できませんでした'
+      redirect_to new_question_path, error: '質問を作成できませんでした'
     end
   end
 
@@ -32,14 +32,14 @@ class QuestionsController < ApplicationController
   def update
     @question = current_user.questions.find(params[:id])
     if @question.update(question_params)
-      redirect_to question_path(@question), notice: '質問を更新しました'
+      redirect_to question_path(@question), success: '質問を更新しました'
     end
   end
 
   def destroy
     @question = current_user.questions.find(params[:id])
     @question.destroy!
-    redirect_to questions_path, notice: "質問「#{@question.title}」を削除しました"
+    redirect_to questions_path, success: "質問「#{@question.title}」を削除しました"
   end
 
   def unsolved
@@ -57,7 +57,7 @@ class QuestionsController < ApplicationController
   def solve
     @question = current_user.questions.find(params[:id])
     @question.update!(solved: true)
-    redirect_to question_path(@question), notice: '解決済みにしました'
+    redirect_to question_path(@question), success: '解決済みにしました'
   end
 
   private

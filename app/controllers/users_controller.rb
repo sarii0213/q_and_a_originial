@@ -12,9 +12,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to questions_path, notice: 'サインアップが完了しました'
+      redirect_to questions_path, success: 'サインアップが完了しました'
     else
-      redirect_to new_user_path, danger: 'ユーザー登録に失敗しました'
+      redirect_to new_user_path, error: 'ユーザー登録に失敗しました'
     end
   end
 

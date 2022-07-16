@@ -32,6 +32,13 @@ gem 'ransack'
 
 gem 'kaminari'
 
+# gem 'semantic-ui-sass'
+
+# gem 'bootstrap-sass', '~> 3.3.7'
+
+gem 'bootstrap', '~> 5.1.3'
+gem 'jquery-rails'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

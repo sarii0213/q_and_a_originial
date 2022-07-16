@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RailsPractice</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  <%#= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css' %>
+  <%= stylesheet_link_tag 'https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css' %>
+  <%#= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js' %>
+  <%= javascript_include_tag 'https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js' %>
+</head>
+
+<body>
+<div class="container">
+
+<div class="ui middle aligned center aligned grid my-5">
+  <div class="eight wide column">
+    <h2 class="ui teal image header">
+      <div class="content">
+        質問回答アプリログイン
+      </div>
+    </h2>
+
+
+      <%= form_with(scope: :session, class: 'ui large form') do |f| %>
+      <div class="ui stacked segment left aligned">
+        <div class="field">
+          <%= f.label :email, User.human_attribute_name(:email) %>
+          <div class="ui left icon input">
+            <i class="user icon"></i>
+            <%= f.text_field :email, id: 'session_email', placeholder: "メールアドレス" %>
+          </div>
+        </div>
+        <div class="field">
+          <%= f.label :password, User.human_attribute_name(:password) %>
+          <div class="ui left icon input">
+            <i class="lock icon"></i>
+            <%= f.password_field :password, id: 'session_password', placeholder: "Password" %>
+          </div>
+        </div>
+<!--        <div class="ui fluid large teal submit button">Login</div>-->
+        <%= f.submit 'ログイン', class: "ui fluid large teal submit button" %>
+      </div>
+
+
+    <% end %>
+      <%= render partial: 'shared/flash_message' %>
+
+    <div class="ui message">
+      アカウントがない場合：
+      <%= link_to 'アカウント登録', new_user_path %>
+    </div>
+  </div>
+</div>
+
+</div>
+<!-- /.container -->
+</body>
+</html>

@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  add_flash_types :danger, :success, :info
+  add_flash_types :danger, :success, :info, :error
   helper_method :current_user
   before_action :login_required
 
@@ -10,6 +10,6 @@ class ApplicationController < ActionController::Base
   end
 
   def login_required
-    redirect_to login_path, notice: 'ログインしてください' unless current_user
+    redirect_to login_path, info: 'ログインしてください' unless current_user
   end
 end
