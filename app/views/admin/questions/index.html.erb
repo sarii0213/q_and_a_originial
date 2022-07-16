@@ -1,4 +1,21 @@
 <% provide :title, '質問一覧' %>
+<div class="row my-3">
+  <div class="col-md-8">
+    <%= search_form_for(@q, url: admin_questions_path) do |f| %>
+      <div class="input-group d-flex align-items-center">
+        <%= f.label :title_or_body_cont, '質問を検索' %>
+        <%= f.search_field :title_or_body_cont, class: "form-control ml-2" %>
+        <div class="input-group-append">
+          <%= f.submit class: 'btn btn-default' %>
+        </div>
+        <!-- /.input-group-append -->
+      </div>
+      <!-- /.field -->
+    <% end %>
+
+  </div>
+  <!-- /.col -->
+</div>
 <div class="card">
   <div class="card-body">
     <table class="table">

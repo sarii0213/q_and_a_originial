@@ -1,6 +1,7 @@
 class Admin::QuestionsController < Admin::BaseController
   def index
-    @questions = Question.all
+    @q = Question.ransack(params[:q])
+    @questions = @q.result(distinct: true).page(params[:page])
   end
 
   def destroy
