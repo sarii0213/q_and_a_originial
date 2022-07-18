@@ -1,0 +1,27 @@
+<%= form_with scope: :session do |f| %>
+  <div class="input-group mb-3">
+    <%= f.text_field :email, id: 'session_email', class: 'form-control', placeholder: 'Email' %>
+    <div class="input-group-append">
+      <div class="input-group-text">
+        <span class="fas fa-envelope"></span>
+      </div>
+    </div>
+  </div>
+  <!-- /.input-group mb-3 -->
+  <div class="input-group mb-3">
+    <%= f.password_field :password, id: 'session_password', class: 'form-control', placeholder: 'Password' %>
+    <div class="input-group-append">
+      <div class="input-group-text">
+        <span class="fas fa-lock"></span>
+      </div>
+    </div>
+  </div>
+  <!-- /.input-group mb-3 -->
+  <div class="row">
+    <div class="col">
+      <%= f.submit t('.submit'), class: 'btn btn-primary btn-block' %>
+    </div>
+    <!-- /.col -->
+  </div>
+  <!-- /.row -->
+<% end %>

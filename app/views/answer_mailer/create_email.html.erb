@@ -1,0 +1,13 @@
+<h3>回答が投稿されました！</h3>
+
+<ul>
+  <li>
+    <%= Question.human_attribute_name(:title) %>：<%= @question.title %>
+  </li>
+  <li>
+    <%= Question.human_attribute_name(:body) %>：<%= @question.body %>
+  </li>
+  <li>
+    <%= Answer.human_attribute_name(:body) %>：<%= @answer.body %>
+  </li>
+</ul>

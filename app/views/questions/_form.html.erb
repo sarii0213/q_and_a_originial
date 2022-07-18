@@ -1,0 +1,13 @@
+<%= form_with(model: question, class:"ui form") do |f|  %>
+  <div class="field">
+  <%= f.label :title %>
+  <%= f.text_field :title, id: 'question_title' %>
+  </div>
+  <!-- /.field -->
+  <div class="field">
+  <%= f.label :body %>
+  <%= f.text_area :body, id: 'question_body' %>
+  </div>
+  <!-- /.field -->
+  <%= f.submit class:'ui primary button' %>
+<% end %>

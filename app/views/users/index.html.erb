@@ -1,0 +1,18 @@
+<h3>ユーザー一覧</h3>
+<div class="ui large middle aligned relaxed celled list">
+  <% @users.each do |user| %>
+    <div class="item">
+      <% if user.image.attached? %>
+        <%= image_tag user.image, class: 'ui avatar image' %>
+      <% else %>
+        <%= image_tag 'default_avatar.png', class: 'ui avatar image' %>
+      <% end %>
+      <div class="content">
+        <%= user.name %>
+      </div>
+      <!-- /.content -->
+    </div>
+    <!-- /.item -->
+  <% end %>
+</div>
+<!-- /.ui list -->

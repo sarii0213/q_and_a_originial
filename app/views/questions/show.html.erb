@@ -1,0 +1,78 @@
+<div id="question-area" class="ui column grid mt-3 mb-5">
+  <div class="column">
+
+    <div class="ui fluid card">
+      <div class="content">
+        <div class="header">
+          <%= @question.title %>
+        </div>
+        <!-- /.header -->
+        <div class="right floated meta">
+          <% if @question.solved %>
+            <span class="ui green horizontal label">解決済み</span>
+          <% else %>
+            <span class="ui red horizontal label">未解決</span>
+            <% if @question.user_id == current_user.id %>
+              <%= link_to '解決済みにする', solve_question_path(@question), class: "ui basic button green", method: :post, data: { confirm: '解決済みにしますか？' } %>
+            <% end %>
+          <% end %>
+          <% if @question.user_id == current_user.id %>
+            <%= link_to '編集', edit_question_path(@question), class: "ui basic button primary" %>
+            <%= link_to '削除', question_path(@question), class: "ui basic button negative", method: :delete, data: { confirm: '削除しますか？' } %>
+          <% end %>
+        </div>
+        <!-- /.meta -->
+        <div class="description">
+          <%= @question.body %>
+        </div>
+        <!-- /.description -->
+      </div>
+      <!-- /.content -->
+      <div class="extra content">
+        <div class="right floated author">
+          <% if @question.user.image.attached? %>
+            <%= image_tag @question.user.image, class: 'ui avatar image' %>
+          <% else %>
+            <%= image_tag 'default_avatar.png', class: 'ui avatar image' %>
+          <% end %>
+          <%= @question.user.name %>
+        </div>
+        <!-- /.right floated author -->
+      </div>
+      <!-- /.extra content -->
+    </div>
+    <!-- /.ui card -->
+  </div>
+  <!-- /.column -->
+</div>
+<!-- /#question-area -->
+
+<%= form_with(model: [@question, Answer.new], class: "ui form") do |f| %>
+  <div class="field">
+    <%= f.label :body %>
+    <%= f.text_area :body, id: 'answer_body' %>
+  </div>
+  <!-- /.field -->
+  <%= f.submit class: 'ui primary button' %>
+<% end %>
+
+<div class="ui large middle aligned relaxed celled list">
+  <% @question.answers.each do |answer| %>
+    <div id=<%= "answer_#{answer.id}" %> class="item">
+      <% if answer.user.image.attached? %>
+        <%= image_tag answer.user.image, class: 'ui avatar image' %>
+      <% else %>
+        <%= image_tag 'default_avatar.png', class: 'ui avatar image' %>
+      <% end %>
+      <div class="content">
+        <%= answer.body %>
+      </div>
+      <!-- /.content -->
+      <div class="right floated content me-5">
+        <% if current_user.id == answer.user_id %>
+          <%= link_to '削除', question_answer_path(@question, answer), class: "ui basic button negative", method: :delete, data: { confirm: '削除しますか？' } %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

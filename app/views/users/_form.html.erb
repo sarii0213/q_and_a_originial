@@ -1,0 +1,35 @@
+<%= form_with(model: @user, class: "ui form") do |f| %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <!-- /.field -->
+
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+  <!-- /.field -->
+
+  <div class="field">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+  <!-- /.field -->
+
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+  <!-- /.field -->
+
+  <div class="field">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <!-- /.field -->
+
+  <%= f.submit '登録する', class: "ui button primary" %>
+
+<% end %>

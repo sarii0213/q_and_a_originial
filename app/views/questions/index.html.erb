@@ -1,0 +1,75 @@
+<h2>質問一覧</h2>
+<div class="ui two column grid">
+  <div class="column">
+    <div class="ui three item menu">
+      <%= link_to 'すべての質問', questions_path, class: 'item' %>
+      <%= link_to '未解決', unsolved_questions_path, class: 'item' %>
+      <%= link_to '解決', solved_questions_path, class: 'item' %>
+    </div>
+  </div>
+  <!-- /.column -->
+</div>
+<!-- /.ui two column center grid -->
+
+<div class="ui form mt-3">
+  <%= search_form_for @q do |f| %>
+    <div class="inline field">
+      <%= f.label :title_or_body_cont, '質問を検索' %>
+      <%= f.search_field :title_or_body_cont %>
+      <%= f.submit class: 'ui button primary' %>
+    </div>
+    <!-- /.field -->
+  <% end %>
+</div>
+
+<div class="ui middle aligned grid my-3">
+  <div class="two column row">
+    <div class="six wide column">
+      <%= paginate @questions %>
+    </div>
+    <!-- /.column -->
+    <div class="column">
+      <%= page_entries_info @questions %>
+    </div>
+    <!-- /.column -->
+  </div>
+  <!-- /.row -->
+</div>
+
+<div class="ui large middle aligned relaxed celled list">
+  <% @questions.each do |question| %>
+    <div class="item">
+      <% if question.user.image.attached? %>
+        <%= image_tag question.user.image, class: 'ui avatar image' %>
+      <% else %>
+        <%= image_tag 'default_avatar.png', class: 'ui avatar image' %>
+      <% end %>
+      <div class="content">
+        <div class="header">
+          <%= link_to question.title, question_path(question) %>
+          <% if question.solved? %>
+            <div class="ui green horizontal label">解決済み</div>
+          <% else %>
+            <div class="ui red horizontal label">未解決</div>
+          <% end %>
+        </div>
+        <!-- /.header -->
+        <div class="description">
+          <%= question.body %>
+        </div>
+        <!-- /.description -->
+      </div>
+      <!-- /.content -->
+      <div class="right floated content me-5">
+        <% if question.user_id == current_user.id %>
+          <%= link_to '編集', edit_question_path(question), class: "ui basic button primary" %>
+          <%= link_to '削除', question_path(question), class: "ui basic button negative", method: :delete, data: { confirm: "質問「#{question.title}」を削除しますか？" } %>
+        <% end %>
+      </div>
+      <!-- /.content -->
+    </div>
+    <!-- /.item -->
+  <% end %>
+</div>
+<!-- /.ui list -->
+

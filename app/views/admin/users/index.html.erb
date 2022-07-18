@@ -1,0 +1,39 @@
+<% provide :title, 'ユーザー一覧' %>
+<div class="card">
+  <div class="card-body">
+    <table class="table">
+      <thead>
+      <tr>
+        <th style="width: 30px"></th>
+        <th></th>
+        <th style="width: 100px"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td>
+            <div class="user-block">
+              <% if user.image.attached? %>
+                <%= image_tag user.image, class: 'img-circle' %>
+              <% else %>
+                <%= image_tag 'default_avatar.png', class: 'img-circle' %>
+              <% end %>
+            </div>
+            <!-- /.user-block -->
+          </td>
+          <td>
+            <%= user.name %>
+          </td>
+          <td>
+            <%= link_to '削除', admin_user_path(user), class: 'btn btn-block btn-outline-primary', method: :delete, data: { confirm: '削除しますか？' } %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <!-- /.table -->
+  </div>
+  <!-- /.card-body -->
+</div>
+<!-- /.card -->
